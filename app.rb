@@ -9,9 +9,8 @@ require 'bundler'
 Bundler.require(:default)
 Bundler.require((ENV['RACK_ENV'] || 'development').to_sym)
 
-# include everything in lib and everything in models
+# include everything in lib
 Dir['./lib/**/*.rb'].each  { |file| require file }
-Dir['./helpers/*.rb'].each { |file| require file }
 
 class SoupstrawAPI < Sinatra::Base
 
@@ -24,7 +23,8 @@ class SoupstrawAPI < Sinatra::Base
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
 
-  get '/' do
-    'hello, world'
-  end
 end
+
+# include helpers and routes
+require_relative 'helpers/init'
+require_relative 'routes/init'
