@@ -12,10 +12,18 @@ GEM
     coderay (1.1.0)
     debug_inspector (0.0.2)
     erubis (2.7.0)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    json (1.8.1)
     method_source (0.8.2)
+    multi_xml (0.5.5)
     parser (2.0.0)
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
+    philips_hue (0.1.9)
+      httparty (>= 0.10.0)
+      json (>= 1.6)
     powerpack (0.0.9)
     pry (0.9.12.3)
       coderay (~> 1.0)
@@ -61,6 +69,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
+  philips_hue
   pry
   rake
   rubocop

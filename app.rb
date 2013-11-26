@@ -20,6 +20,9 @@ class SoupstrawAPI < Sinatra::Base
     BetterErrors.application_root = File.expand_path('..', __FILE__)
   end
 
+  #TODO: use the latest gem version
+  set :hue, PhilipsHue::Bridge.new("lightsapp", "10.0.1.7")
+
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
 
