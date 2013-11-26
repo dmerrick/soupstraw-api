@@ -1,3 +1,5 @@
 .bundle/
 .DS_Store
 tmp/**/*
+ignore
+config/application.yml

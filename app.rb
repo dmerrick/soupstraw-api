@@ -20,11 +20,23 @@ class SoupstrawAPI < Sinatra::Base
     BetterErrors.application_root = File.expand_path('..', __FILE__)
   end
 
-  #TODO: use the latest gem version
-  set :hue, PhilipsHue::Bridge.new("lightsapp", "10.0.1.7")
-
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
+
+  # ------------------------------------------------------------
+
+  set :settings_file, 'config/application.yml'
+  env = settings.environment.to_s
+
+  # import settings from application.yml
+  application_settings = {}
+  YAML::load(File.open(settings.settings_file))[env].each do |key, value|
+    application_settings[key.to_sym] = value
+  end
+  set :app, application_settings
+
+  #TODO: use the latest gem version
+  set :hue, PhilipsHue::Bridge.new('lightsapp', settings.app[:hue_address])
 
 end
 

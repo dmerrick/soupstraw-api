@@ -1,0 +1,3 @@
+development:
+  site_url: soupstraw.com
+  hue_address: 10.0.1.7
