@@ -45,8 +45,9 @@ class SoupstrawAPI < Sinatra::Base
     def auth(type)
       condition do
         unless send("is_#{type}?")
-          # ask the user for credentials
+          # ask the user for credentials...
           headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+          # ...or just serve them a 401
           halt 401, "Not authorized\n"
         end
       end
