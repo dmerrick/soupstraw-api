@@ -5,7 +5,7 @@ class SoupstrawAPI < Sinatra::Base
       light.on!
     end
     #TODO: better response
-    'on'
+    { status: 'on' }.to_json
   end
 
   get '/lights/off' do
@@ -13,7 +13,7 @@ class SoupstrawAPI < Sinatra::Base
       light.off!
     end
     #TODO: better response
-    'off'
+    { status: 'off' }.to_json
   end
 
 end
