@@ -38,6 +38,21 @@ class SoupstrawAPI < Sinatra::Base
   #TODO: use the latest gem version
   set :hue, PhilipsHue::Bridge.new('lightsapp', settings.app[:hue_address])
 
+  # ------------------------------------------------------------
+
+  register do
+    # this redirects users to the log in page if they're not a user
+    def auth(type)
+      condition do
+        unless send("is_#{type}?")
+          # ask the user for credentials
+          headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+          halt 401, "Not authorized\n"
+        end
+      end
+    end
+  end
+
 end
 
 # include helpers and routes

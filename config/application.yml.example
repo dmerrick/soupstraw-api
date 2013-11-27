@@ -1,3 +1,5 @@
 development:
   site_url: soupstraw.com
-  hue_address: 10.0.1.7
+  hue_address: 10.0.0.100
+  home_username: username
+  home_password: password

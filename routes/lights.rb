@@ -1,6 +1,6 @@
 class SoupstrawAPI < Sinatra::Base
 
-  get '/lights/on' do
+  get '/lights/on', auth: :authorized do
     settings.hue.lights.each do |light|
       light.on!
     end
@@ -8,7 +8,7 @@ class SoupstrawAPI < Sinatra::Base
     { status: 'on' }.to_json
   end
 
-  get '/lights/off' do
+  get '/lights/off', auth: :authorized do
     settings.hue.lights.each do |light|
       light.off!
     end
