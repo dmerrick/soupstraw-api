@@ -4,7 +4,9 @@ class SoupstrawAPI < Sinatra::Base
   end
 
   get '/bladehealth', auth: :authorized do
-    #FIXME: this needs JSON or something
-    `/usr/local/bin/bladehealth`
+    #TODO: eventually remove the -p
+    # -j is for json output
+    # -p is for pretty-printing
+    `/usr/local/bin/bladehealth -j -p`
   end
 end
