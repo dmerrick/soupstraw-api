@@ -5,6 +5,7 @@ class SoupstrawAPI < Sinatra::Base
 
   get '/bladehealth', auth: :authorized do
     # -j is for json output
+    #TODO: add -v for configuration data
     `/usr/local/bin/bladehealth -j`
   end
 end
