@@ -4,8 +4,10 @@ class SoupstrawAPI < Sinatra::Base
     content_type :json
     lights = {}
     #TODO: add a Light#to_json method to philips_hue gem
+    #TODO: also add light.name as symbol
     settings.hue.lights.inject(lights) do |hash, light|
-      hash[light.light_id] = light.state.merge(name: light.name)
+      name = light.name.split.map(&:capitalize).join(' ')
+      hash[name] = light.state.merge(id: light.light_id)
       hash
     end
     lights.to_json
