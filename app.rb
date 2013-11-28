@@ -15,6 +15,10 @@ Dir['./lib/**/*.rb'].each  { |file| require file }
 class SoupstrawAPI < Sinatra::Base
 
   configure :development do
+
+    # turn off http basic auth
+    set :disable_http_auth, true
+
     use BetterErrors::Middleware
     # need to set in order to abbreviate filenames
     BetterErrors.application_root = File.expand_path('..', __FILE__)

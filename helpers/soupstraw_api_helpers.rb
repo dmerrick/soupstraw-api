@@ -6,8 +6,7 @@ module SoupstrawAPIHelpers
   end
 
   def is_authorized?
-    #TODO: figure out why this doesnt work
-    #return true if settings.environment == 'development'
+    return true if settings.disable_http_auth
     creds = [settings.app[:home_username], settings.app[:home_password]]
     auth ||= Rack::Auth::Basic::Request.new(request.env)
     auth.provided? && auth.basic? && auth.credentials && auth.credentials == creds
