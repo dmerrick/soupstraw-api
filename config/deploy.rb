@@ -1,7 +1,7 @@
 # application options
 set :application, 'soupstraw-api'
-set :domain, 'deafuy.soupstraw.com'
-set :deploy_to, "/home/dmerrick/soupstraw-api"
+set :domain, 'soupstraw.com'
+set :deploy_to, '/home/dmerrick/soupstraw-api'
 
 # user options
 set :user, 'dmerrick'
@@ -27,7 +27,7 @@ set :rvm_type, :user
 set :rvm_ruby_version, `cat .ruby-version`.chomp
 
 # set to :debug if things are breaking
-set :log_level, :debug
+set :log_level, :info
 
 # some defaults to keep around
 # set :default_env, { path: "/opt/rbenv/bin:$PATH" }
@@ -46,11 +46,12 @@ namespace :deploy do
     end
   end
 
+  # clean up old releases
   after :finishing, 'deploy:cleanup'
 
 end
 
-desc "Report uptime for all servers"
+desc 'Report uptime for all servers'
 task :uptime do
   on roles(:all) do |host|
     info "Host #{host} (#{host.roles.to_a.join(', ')}):\t#{capture(:uptime)}"
