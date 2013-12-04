@@ -2,7 +2,9 @@
 
 ## What is the purpose of Soupstraw API?
 
-TBD
+This project is run on a host that you want to be accessible to the outside world. It provides an authenticated JSON API for running arbitrary commands.
+
+For instance, I have it set up to run on my home network so that I can do things like controlling the lights in my apartment from my (EC2-hosted) website.
 
 ## How do I get started?
 
