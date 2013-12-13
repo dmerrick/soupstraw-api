@@ -3,5 +3,5 @@ require_relative 'soupstraw_api_helpers'
 SoupstrawAPI.helpers SoupstrawAPIHelpers
 
 # helpers specific to lights
-require_relative 'Lights'
+require_relative 'lights'
 SoupstrawAPI.helpers Lights
