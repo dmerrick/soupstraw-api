@@ -24,6 +24,10 @@ class SoupstrawAPI < Sinatra::Base
     BetterErrors.application_root = File.expand_path('..', __FILE__)
   end
 
+  configure :production do
+    set :disable_http_auth, false
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
 
