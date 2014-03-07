@@ -3,3 +3,4 @@ development:
   hue_address: 10.0.0.100
   home_username: username
   home_password: password
+  datadog_key: somethingsomething

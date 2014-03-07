@@ -12,6 +12,8 @@ gem 'capistrano-bundler'
 gem 'capistrano-rvm', '~> 0.1.0'
 # enables OSX notifications
 gem 'capistrano-nc', '~> 0.1.0'
+# datadog capistrano plugin
+gem 'dogapi'
 
 group :development do
   gem 'shotgun'

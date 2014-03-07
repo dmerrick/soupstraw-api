@@ -13,6 +13,9 @@ require 'capistrano/bundler'
 # enable OSX notifications
 require 'capistrano-nc/nc'
 
+# enable datadog integration
+require 'capistrano/datadog'
+
 #TODO: implement this
 # https://github.com/cramerdev/capistrano-chef
 #require 'capistrano/chef'
