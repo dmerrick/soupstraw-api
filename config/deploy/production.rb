@@ -11,4 +11,8 @@ set :ssh_options, {
 
 server 'deafguy.soupstraw.com',
         user: 'dmerrick',
-        roles: %w{ app web }
+        roles: %w{ app web deafguy }
+
+server 'dmerrick-mini.local',
+        user: 'dmerrick',
+        roles: %w{ app web media_center }
