@@ -31,6 +31,28 @@ class SoupstrawAPI < Sinatra::Base
     { status: 'off' }.to_json
   end
 
+  get '/lights/toggle/?', auth: :authorized do
+    @light_id = request[:light_id] || 1
+    redirect "/lights/toggle/#{@light_id}?#{request.query_string}"
+  end
+
+  get '/lights/toggle/:id', auth: :authorized do
+    content_type :json
+
+    light_id = params[:id]
+    light = settings.hue.light(light_id)
+
+    if light.on?
+      light.off!
+      status = 'off'
+    else
+      light.on!
+      status = 'on'
+    end
+
+    { status: status, light_id: light_id }.to_json
+  end
+
   get '/lights/flash/?', auth: :authorized do
     @light_id = request[:light_id] || 1
     redirect "/lights/flash/#{@light_id}?#{request.query_string}"
