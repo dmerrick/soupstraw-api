@@ -42,12 +42,13 @@ namespace :deploy do
   desc 'Restart web server'
   task :restart do
     on roles(:web), in: :sequence, wait: 5 do
-      puts '***'
-      puts '*** you will now need to manually restart the app'
-      puts '***'
+      #TODO: implement me (for deafguy)
       #execute 'sudo /etc/init.d/unicorn full-restart'
     end
   end
+
+  # restart on each deploy
+  #after :publishing, :restart
 
   # clean up old releases
   after :finishing, 'deploy:cleanup'
