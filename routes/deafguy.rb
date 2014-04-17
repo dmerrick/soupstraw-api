@@ -16,4 +16,10 @@ class SoupstrawAPI < Sinatra::Base
     response = media_center_api('/itunes/play')
     response.body
   end
+
+  get '/itunes/pause', auth: :authorized do
+    pass unless is_deafguy?
+    response = media_center_api('/itunes/pause')
+    response.body
+  end
 end
