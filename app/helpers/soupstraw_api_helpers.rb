@@ -25,4 +25,8 @@ module SoupstrawAPIHelpers
     http.request(request)
   end
 
+  def tell_iTunes_to(command)
+    "osascript -e 'tell application \"iTunes\" to #{command}'"
+  end
+
 end
