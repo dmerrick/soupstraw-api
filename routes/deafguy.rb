@@ -11,8 +11,9 @@ class SoupstrawAPI < Sinatra::Base
     `/usr/local/bin/bladehealth -j`
   end
 
-  get '/play', auth: :authorized do
+  get '/itunes/play', auth: :authorized do
     pass unless is_deafguy?
-    media_center_api('/itunes/play')
+    response = media_center_api('/itunes/play')
+    response.body
   end
 end
