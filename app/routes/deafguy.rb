@@ -6,20 +6,17 @@ class SoupstrawAPI < Sinatra::Base
 
   get '/bladehealth', auth: :authorized do
     pass unless is_deafguy?
+    content_type :json
     # -j is for json output
     #TODO: add -v for configuration data
     `/usr/local/bin/bladehealth -j`
   end
 
-  get '/itunes/play', auth: :authorized do
+  get '/itunes/:command', auth: :authorized do
     pass unless is_deafguy?
-    response = media_center_api('/itunes/play')
+    content_type :json
+    response = media_center_api("/itunes/#{params[:command]}")
     response.body
   end
 
-  get '/itunes/pause', auth: :authorized do
-    pass unless is_deafguy?
-    response = media_center_api('/itunes/pause')
-    response.body
-  end
 end
