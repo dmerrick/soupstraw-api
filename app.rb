@@ -65,5 +65,5 @@ class SoupstrawAPI < Sinatra::Base
 end
 
 # include helpers and routes
-require_relative 'helpers/init'
-require_relative 'routes/init'
+require_relative 'app/helpers/init'
+require_relative 'app/routes/init'
