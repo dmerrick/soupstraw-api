@@ -18,8 +18,12 @@ class SoupstrawAPI < Sinatra::Base
   get '/healthcheck/mediacenter' do
     pass unless is_deafguy?
     content_type 'text/plain'
-    response = media_center_api('/')
-    return 'NOMEDIA' unless response.body =~ /media center/
+    begin
+      response = media_center_api('/')
+    rescue Errno::ECONNREFUSED
+      return 'MEDIACENTERDOWN'
+    end
+    return 'NOTMEDIACENTER' unless response.body =~ /media center/
     'OK'
   end
 
