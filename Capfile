@@ -15,6 +15,8 @@ require 'capistrano-nc/nc'
 
 # enable datadog integration
 require 'capistrano/datadog'
+require 'yaml'
+set :datadog_api_key, YAML.load_file(File.open('config/application.yml'))['development']['datadog_key']
 
 #TODO: implement this
 # https://github.com/cramerdev/capistrano-chef

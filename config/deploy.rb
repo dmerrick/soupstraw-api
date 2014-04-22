@@ -30,9 +30,6 @@ set :rvm_ruby_version, `cat .ruby-version`.chomp
 set :log_level, :info
 set :format, :dot
 
-# datadog integration
-set :datadog_api_key, YAML::load(File.open('config/application.yml'))['development']['datadog_key']
-
 # some defaults to keep around
 # set :default_env, { path: "/opt/rbenv/bin:$PATH" }
 # set :keep_releases, 5
