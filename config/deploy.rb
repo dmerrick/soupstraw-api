@@ -26,8 +26,9 @@ set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
 set :rvm_type, :user
 set :rvm_ruby_version, `cat .ruby-version`.chomp
 
-# set to :debug if things are breaking
+# set to :debug, and :format to :pretty if things are breaking
 set :log_level, :info
+set :format, :dot
 
 # datadog integration
 set :datadog_api_key, YAML::load(File.open('config/application.yml'))['development']['datadog_key']
@@ -35,7 +36,7 @@ set :datadog_api_key, YAML::load(File.open('config/application.yml'))['developme
 # some defaults to keep around
 # set :default_env, { path: "/opt/rbenv/bin:$PATH" }
 # set :keep_releases, 5
-# set :format, :pretty
+
 
 namespace :deploy do
 
