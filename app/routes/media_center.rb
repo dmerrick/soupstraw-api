@@ -1,6 +1,7 @@
 class SoupstrawAPI < Sinatra::Base
   get '/?' do
     pass unless is_media_center?
+    content_type 'text/plain'
     'hello, media center'
   end
 

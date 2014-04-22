@@ -1,6 +1,7 @@
 class SoupstrawAPI < Sinatra::Base
   get '/?' do
     pass unless is_deafguy?
+    content_type 'text/plain'
     'hello, deafguy'
   end
 
@@ -10,6 +11,16 @@ class SoupstrawAPI < Sinatra::Base
     # -j is for json output
     #TODO: add -v for configuration data
     `/usr/local/bin/bladehealth -j`
+  end
+
+  # check if the media center is alive and running
+  # the right configuration of this project
+  get '/healthcheck/mediacenter', auth: :authorized do
+    pass unless is_deafguy?
+    content_type 'text/plain'
+    response = media_center_api('/')
+    return 'NOMEDIA' unless response.body =~ /media center/
+    'OK'
   end
 
   #TODO: more clever way to define these routes
