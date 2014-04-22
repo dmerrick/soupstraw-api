@@ -47,8 +47,17 @@ namespace :deploy do
     end
   end
 
+  task :remind_user_to_restart do
+    on roles(:web), in: :sequence, wait: 5 do
+      puts '* ' * 28
+      puts "*  Don't forget to manually restart the API endpoint! *"
+      puts '* ' * 28
+    end
+  end
+
   # restart on each deploy
   #after :publishing, :restart
+  after :publishing, :remind_user_to_restart
 
   # clean up old releases
   after :finishing, 'deploy:cleanup'
