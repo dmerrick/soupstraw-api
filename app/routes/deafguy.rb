@@ -13,9 +13,9 @@ class SoupstrawAPI < Sinatra::Base
     `/usr/local/bin/bladehealth -j`
   end
 
-  # check if the media center is alive and running
-  # the right configuration of this project
-  get '/healthcheck/mediacenter', auth: :authorized do
+  # return OK if the media center is alive and
+  # running the right configuration
+  get '/healthcheck/mediacenter' do
     pass unless is_deafguy?
     content_type 'text/plain'
     response = media_center_api('/')
