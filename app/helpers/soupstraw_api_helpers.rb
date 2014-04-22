@@ -21,6 +21,7 @@ module SoupstrawAPIHelpers
     request = Net::HTTP::Get.new(uri.request_uri)
     # uses the same PW as the home API
     request.basic_auth(settings.app[:home_username], settings.app[:home_password])
+    #TODO: catch exceptions here
     http = Net::HTTP.new(uri.host, uri.port)
     http.request(request)
   end
