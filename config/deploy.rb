@@ -1,7 +1,7 @@
 # application options
 set :application, 'soupstraw-api'
 set :domain, 'soupstraw.com'
-set :deploy_to, '/home/dmerrick/soupstraw-api'
+set :deploy_to, '/data/soupstraw-api'
 
 # user options
 set :user, 'dmerrick'
