@@ -47,6 +47,7 @@ namespace :deploy do
 
   task :remind_user_to_restart do
     on roles(:web), in: :sequence, wait: 5 do
+      puts
       puts '* ' * 28
       puts "*  Don't forget to manually restart the API endpoint! *"
       puts '* ' * 28
