@@ -96,8 +96,8 @@ class SoupstrawAPI < Sinatra::Base
     status[:light] = settings.hue.light(light_id)
 
     # set some defaults
-    status[:repeat] = request[:repeat].to_i || 1
-    status[:delay]  = request[:delay].to_i  || 1
+    status[:repeat] = request[:repeat] ? request[:repeat].to_i : 1
+    status[:delay]  = request[:delay] ? request[:delay].to_i : 1
     status[:crazy]  = request[:crazy] || false
     status[:color]  = colors[request[:color]] || colors['red']
 
