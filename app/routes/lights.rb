@@ -35,6 +35,7 @@ class SoupstrawAPI < Sinatra::Base
   get '/lights/living_room/reset', auth: :authorized do
     content_type :json
     settings.hue.lights.each do |light|
+      light.on!
       light.xy = colors['white']
     end
     #TODO: better response
