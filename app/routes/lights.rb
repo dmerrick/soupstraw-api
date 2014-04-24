@@ -39,6 +39,7 @@ class SoupstrawAPI < Sinatra::Base
     settings.app[:living_room_lights].each do |light_id|
       light = settings.hue.light(light_id)
       light.on!
+      light.brightness = 240
       light.xy = colors['white']
     end
     #TODO: better response
@@ -51,6 +52,7 @@ class SoupstrawAPI < Sinatra::Base
     settings.app[:bedroom_lights].each do |light_id|
       light = settings.hue.light(light_id)
       light.on!
+      light.brightness = 240
       light.xy = colors['white']
     end
     #TODO: better response
