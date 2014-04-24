@@ -13,6 +13,8 @@ class SoupstrawAPI < Sinatra::Base
     lights.to_json
   end
 
+  #TODO: add brightness controls
+
   get '/lights/living_room/on', auth: :authorized do
     content_type :json
     settings.app[:living_room_lights].each do |light_id|
