@@ -10,4 +10,5 @@ development:
   living_room_lights:
     - 1
     - 2
+  bedroom_lights:
     - 3
