@@ -7,3 +7,7 @@ development:
   is_deafguy: false
   is_media_center: false
   media_center_url: 10.0.0.101
+  living_room_lights:
+    - 1
+    - 2
+    - 3

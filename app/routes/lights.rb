@@ -15,7 +15,8 @@ class SoupstrawAPI < Sinatra::Base
 
   get '/lights/living_room/on', auth: :authorized do
     content_type :json
-    settings.hue.lights.each do |light|
+    settings.app[:living_room_lights].each do |light_id|
+      light = settings.hue.light(light_id)
       light.on!
     end
     #TODO: better response
@@ -24,7 +25,8 @@ class SoupstrawAPI < Sinatra::Base
 
   get '/lights/living_room/off', auth: :authorized do
     content_type :json
-    settings.hue.lights.each do |light|
+    settings.app[:living_room_lights].each do |light_id|
+      light = settings.hue.light(light_id)
       light.off!
     end
     #TODO: better response
@@ -34,7 +36,8 @@ class SoupstrawAPI < Sinatra::Base
   # reset all lights to white
   get '/lights/living_room/reset', auth: :authorized do
     content_type :json
-    settings.hue.lights.each do |light|
+    settings.app[:living_room_lights].each do |light_id|
+      light = settings.hue.light(light_id)
       light.on!
       light.xy = colors['white']
     end
