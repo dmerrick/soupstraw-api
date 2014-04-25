@@ -54,8 +54,8 @@ class SoupstrawAPI < Sinatra::Base
     settings.app[:bedroom_lights].each do |light_id|
       light = settings.hue.light(light_id)
       light.on!
-      light.brightness = 240
-      light.xy = colors['white']
+      light.brightness = 200
+      light.ct = 380
     end
     #TODO: better response
     { status: 'reset' }.to_json
