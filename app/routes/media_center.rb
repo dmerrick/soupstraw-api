@@ -41,7 +41,7 @@ class SoupstrawAPI < Sinatra::Base
   end
 
   # not authorized cause it's on the home network
-  get '/itunes/volume/up' do
+  get '/itunes/volume_up' do
     pass unless is_media_center?
     content_type :json
     vol = `#{tell_iTunes_to("sound volume as integer")}`.to_i
@@ -50,7 +50,7 @@ class SoupstrawAPI < Sinatra::Base
   end
 
   # not authorized cause it's on the home network
-  get '/itunes/volume/down' do
+  get '/itunes/volume_down' do
     pass unless is_media_center?
     content_type :json
     vol = `#{tell_iTunes_to("sound volume as integer")}`.to_i
