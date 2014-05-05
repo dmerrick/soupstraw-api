@@ -27,15 +27,7 @@ class SoupstrawAPI < Sinatra::Base
     'OK'
   end
 
-  #TODO: more clever way to define these routes
-  get '/itunes/volume/:command', auth: :authorized do
-    pass unless is_deafguy?
-    content_type :json
-    response = media_center_api("/itunes/volume/#{params[:command]}")
-    response.body
-  end
-
-  get '/itunes/:command', auth: :authorized do
+  get '/wall_remote/:command', auth: :authorized do
     pass unless is_deafguy?
     content_type :json
     response = media_center_api("/itunes/#{params[:command]}")
