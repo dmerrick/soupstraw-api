@@ -5,6 +5,13 @@ class SoupstrawAPI < Sinatra::Base
     'hello, deafguy'
   end
 
+  # this doesn't currently require auth, but it could
+  get '/stacklight' do
+    pass unless is_deafguy?
+    content_type 'text/plain'
+    `/usr/local/bin/autostrobe.py`
+  end
+
   get '/bladehealth', auth: :authorized do
     pass unless is_deafguy?
     content_type :json
