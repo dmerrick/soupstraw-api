@@ -9,7 +9,14 @@ class SoupstrawAPI < Sinatra::Base
   get '/stacklight' do
     pass unless is_deafguy?
     content_type 'text/plain'
-    `/usr/local/bin/autostrobe.py`
+    # this is how it used to work: `/usr/local/bin/autostrobe.py`
+    blue, red, amber, green	= [0, 0, 0, 0]
+    # make sure it's never all off
+    until blue + red + amber + green > 0
+      blue, red, amber, green	= [ rand(2), rand(2), rand(2), rand(2) ]
+    end
+    url = "https://agent.electricimp.com/mNpmQNrLzFmS?blue_light=#{blue}&red_light=#{red}&amber_light=#{amber}&green_light=#{green}"
+    open(url).read
   end
 
   get '/bladehealth', auth: :authorized do
